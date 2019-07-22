@@ -74,7 +74,7 @@ class ReactSpeech {
 
     speakMessage(message) {
         const speech = this.speech;
-
+        speech.length = 'en-US';
         speech.volume = 2;
         speech.rate = 1;
         speech.pitch = 1;
