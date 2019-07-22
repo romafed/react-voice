@@ -9,7 +9,8 @@ const ConversationBtn = () => {
         { questions: ['what are you doing'], answers: ['nothing'] },
         { questions: ['hello', 'хай'], answers: ['good by', 'hello Roman'] },
         { questions: ['you stupid', 'fuck you'], answers: ['no you', 'go away'] },
-        { questions: ['time'], answers: [`it is ${new Date().getHours()} ${new Date().getMinutes()}`] }
+        { questions: ['time', 'година'], answers: [`it is ${new Date().getHours()} ${new Date().getMinutes()}`] },
+        { questions: ['година'], answers: [`на даний момент ${new Date().getHours()} ${new Date().getMinutes()}`] }
     ]
 
     const [isStart, hendleSpeechStart] = useSpeech(answersQuestions);
