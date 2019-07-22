@@ -1,25 +1,45 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useContext } from 'react';
+import { Switch, Route, __RouterContext } from 'react-router-dom';
+import { useTransition, animated } from 'react-spring';
+import backgroundVideo from './img/Hud_R.mp4';
+
+// Component
+import MainConversationPage from './components/conversation-page/MainConversation';
+import MainCustomizationPage from './components/customizations-page/MainCustom';
 import './App.css';
 
 function App() {
+
+  const { location } = useContext(__RouterContext);
+  const transition = useTransition(location, location => location.pathname, {
+    initial: { transform: 'translateX(-100%)', position: 'absolute' },
+    from: { transform: 'translateX(-80%)', position: 'absolute' },
+    enter: { transform: 'translateX(0)', position: 'relative' },
+    leave: { transform: 'translateX(-100%)', position: 'absolute' },
+    config: { mass: 3, friction: 30 }
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <video autoPlay muted loop id="backgroundVideo">
+        <source src={backgroundVideo} type="video/mp4" />
+      </video>
+
+      <main className='mainContent'>
+        {transition.map(({ item, props, key }) => (
+          <animated.div
+            className='animatedDiv'
+            style={props}
+            key={key}
+          >
+            <Switch location={item}>
+              <Route path='/customize' component={MainCustomizationPage} />
+              <Route exact path='/' component={MainConversationPage} />
+            </Switch>
+          </animated.div>
+        ))}
+      </main>
+    </>
   );
 }
 
