@@ -77,7 +77,7 @@ class ReactSpeech {
 
     speakMessage(message) {
         this.speech.text = message;
-        window.speechSynthesis.speak(this.speech);
+        speechSynthesis.speak(this.speech);
     }
 }
 

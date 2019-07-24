@@ -24,10 +24,10 @@ function App() {
 
   return (
     <>
+      <Loading show={isLoaded} />
       <video onLoadedData={() => setLoading(true)} autoPlay muted loop id="backgroundVideo">
         <source src={backgroundVideo} type="video/mp4" />
       </video>
-      <Loading show={isLoaded} />
       <main className='mainContent'>
         {transition.map(({ item, props, key }) => (
           <animated.div
