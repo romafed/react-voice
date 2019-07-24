@@ -6,10 +6,8 @@ class ReactSpeech {
         this.recognition = new SpeechRecognition();
         // initialising of speech
         this.speech = new SpeechSynthesisUtterance();
-        this.speech.length = 'en-US';
+        this.speech.lang = 'en-US';
         this.speech.volume = 2;
-        this.speech.rate = 1;
-        this.speech.pitch = 1;
         // result of recognition
         this.transcript = null;
         // Answers & questions
