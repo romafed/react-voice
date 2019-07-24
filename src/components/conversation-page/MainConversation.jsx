@@ -9,10 +9,10 @@ const MainConversationPage = () => {
     const answersQuestions = [
         { questions: ['how are you'], answers: ['i am fine thank you'] },
         { questions: ['what are you doing'], answers: ['nothing'] },
-        { questions: ['hello', 'хай'], answers: ['good by', 'hello Roman'] },
-        { questions: ['you stupid', 'fuck you'], answers: ['no you', 'go away'] },
-        { questions: ['time', 'година'], answers: [`it is ${formatingTime()}`] },
-        { questions: ['година'], answers: [`на даний момент ${formatingTime()}`] }
+        { questions: ['hello'], answers: ['good by', 'hello Roman'] },
+        { questions: ['you stupid', 'f*** you'], answers: ['no you', 'go away'] },
+        { questions: ['time'], answers: [`it is ${formatingTime()}`] },
+        { questions: ['thank', 'thanks', 'thank you'], answers: ['You are welcome', 'No thanks you for creation of me - human'] }
     ]
 
 

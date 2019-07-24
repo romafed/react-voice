@@ -4,6 +4,7 @@ class ReactSpeech {
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         // initialising of recognition
         this.recognition = new SpeechRecognition();
+        this.recognition.lang = 'en-Us';
         // initialising of speech
         this.speech = new SpeechSynthesisUtterance();
         this.speech.lang = 'en-US';
@@ -24,7 +25,8 @@ class ReactSpeech {
 
         // End of conversation
         this.recognition.onspeechend = () => {
-            if (callback) callback();
+            if (callback);
+            callback();
             console.log('end of talking');
         }
 
@@ -51,6 +53,7 @@ class ReactSpeech {
 
     findingAnswer(transcript) {
         const message = transcript.toLowerCase();
+        console.log(message);
 
         // finding answer
         const answer = this.answersQuestions.find(sentence => {

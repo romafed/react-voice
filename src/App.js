@@ -5,8 +5,8 @@ import backgroundVideo from './img/Hud_R.mp4';
 // Component
 import MainConversationPage from './components/conversation-page/MainConversation';
 import MainCustomizationPage from './components/customizations-page/MainCustom';
-import './App.css';
 import Loading from './components/common/loading';
+import './App.css';
 
 function App() {
 
