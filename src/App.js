@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Switch, Route, __RouterContext } from 'react-router-dom';
 import { useTransition, animated } from 'react-spring';
 import backgroundVideo from './img/Hud_R.mp4';
@@ -7,6 +7,7 @@ import backgroundVideo from './img/Hud_R.mp4';
 import MainConversationPage from './components/conversation-page/MainConversation';
 import MainCustomizationPage from './components/customizations-page/MainCustom';
 import './App.css';
+import Loading from './components/common/loading';
 
 function App() {
 
@@ -19,12 +20,14 @@ function App() {
     config: { mass: 3, friction: 30 }
   });
 
+  const [isLoaded, setLoading] = useState(false);
+
   return (
     <>
-      <video autoPlay muted loop id="backgroundVideo">
+      <video onLoadedData={() => setLoading(true)} autoPlay muted loop id="backgroundVideo">
         <source src={backgroundVideo} type="video/mp4" />
       </video>
-
+      <Loading show={isLoaded} />
       <main className='mainContent'>
         {transition.map(({ item, props, key }) => (
           <animated.div

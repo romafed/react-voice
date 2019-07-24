@@ -6,6 +6,10 @@ class ReactSpeech {
         this.recognition = new SpeechRecognition();
         // initialising of speech
         this.speech = new SpeechSynthesisUtterance();
+        this.speech.length = 'en-US';
+        this.speech.volume = 2;
+        this.speech.rate = 1;
+        this.speech.pitch = 1;
         // result of recognition
         this.transcript = null;
         // Answers & questions
@@ -55,17 +59,16 @@ class ReactSpeech {
             const val = sentence.questions.filter(str => {
                 return message.includes(str);
             });
-            if (val[0]) return message.includes(val[0]);
+
+            return message.includes(val[0]);
         });
 
-        // Speek answer
-        if (answer) {
-            const { answers } = answer;
-            const speekAnswer = answers[Math.floor(Math.random() * answers.length)];
-            return this.speakMessage(speekAnswer)
-        }
-        return this.speakMessage('I dont know what to say');
+        if (!answer) return this.speakMessage('I dont know what to say');
 
+        // Speek answer
+        const { answers } = answer;
+        const speekAnswer = answers[Math.floor(Math.random() * answers.length)];
+        return this.speakMessage(speekAnswer);
     }
 
     addingAnswersQuestions() {
@@ -73,15 +76,8 @@ class ReactSpeech {
     }
 
     speakMessage(message) {
-        const speech = this.speech;
-        speech.length = 'en-US';
-        speech.volume = 2;
-        speech.rate = 1;
-        speech.pitch = 1;
-
-        speech.text = message;
-
-        window.speechSynthesis.speak(speech);
+        this.speech.text = message;
+        window.speechSynthesis.speak(this.speech);
     }
 }
 
