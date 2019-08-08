@@ -5,7 +5,7 @@ const useSpeech = (answersQuestions) => {
 
     const [isStart, setStart] = useState(false)
 
-    const changeStart = () => setStart(prevVal => !prevVal);
+    const changeStart = (value) => setStart(value);
     const reactSpeech = new ReactSpeech(answersQuestions);
     reactSpeech.startApi(changeStart);
 

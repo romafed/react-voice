@@ -20,13 +20,11 @@ class ReactSpeech {
         this.recognition.onstart = () => {
             this.speakMessage('You can talk');
             console.log('start of talking');
-            if (callback) callback();
+            if (callback) callback(true);
         };
 
         // End of conversation
         this.recognition.onspeechend = () => {
-            if (callback);
-            callback();
             console.log('end of talking');
         }
 
@@ -35,6 +33,10 @@ class ReactSpeech {
             const current = event.resultIndex;
             this.transcript = event.results[current][0].transcript;
             this.findingAnswer(this.transcript);
+        }
+
+        this.recognition.onend = () => {
+            if (callback) callback(false);
         }
 
         this.speech.onstart = () => {
