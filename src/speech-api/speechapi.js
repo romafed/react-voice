@@ -18,7 +18,17 @@ class ReactSpeech {
     startApi(callback) {
         // Starting talk
         this.recognition.onstart = () => {
-            this.speakMessage('You can talk');
+
+            if (!navigator.userAgent.match(/Android/i)
+                || !navigator.userAgent.match(/webOS/i)
+                || !navigator.userAgent.match(/iPhone/i)
+                || !navigator.userAgent.match(/iPad/i)
+                || !navigator.userAgent.match(/iPod/i)
+                || !navigator.userAgent.match(/BlackBerry/i)
+                || !navigator.userAgent.match(/Windows Phone/i)) {
+                    this.speakMessage('You can talk');
+            }
+
             console.log('start of talking');
             if (callback) callback(true);
         };
