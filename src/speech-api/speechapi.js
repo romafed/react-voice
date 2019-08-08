@@ -18,19 +18,19 @@ class ReactSpeech {
     startApi(callback) {
         // Starting talk
         this.recognition.onstart = () => {
-
-            if (!navigator.userAgent.match(/Android/i)
-                || !navigator.userAgent.match(/webOS/i)
-                || !navigator.userAgent.match(/iPhone/i)
-                || !navigator.userAgent.match(/iPad/i)
-                || !navigator.userAgent.match(/iPod/i)
-                || !navigator.userAgent.match(/BlackBerry/i)
-                || !navigator.userAgent.match(/Windows Phone/i)) {
-                    this.speakMessage('You can talk');
-            }
-
-            console.log('start of talking');
+            
             if (callback) callback(true);
+
+            if (navigator.userAgent.match(/Android/i)
+                || navigator.userAgent.match(/webOS/i)
+                || navigator.userAgent.match(/iPhone/i)
+                || navigator.userAgent.match(/iPad/i)
+                || navigator.userAgent.match(/iPod/i)
+                || navigator.userAgent.match(/BlackBerry/i)
+                || navigator.userAgent.match(/Windows Phone/i)) {
+                return;
+            }
+            this.speakMessage('You can talk');
         };
 
         // End of conversation
