@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import PageLink from '../common/pageLink';
-import ConversationBtn from './conversationBtn';
+import PageLink from '../components/common/pageLink';
+import ConversationBtn from '../components/conversationBtn';
 import './MainConversation.css';
 
 const MainConversationPage = () => {

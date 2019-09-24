@@ -1,5 +1,5 @@
 import React from 'react';
-import useSpeech from './../../hooks/useSpeech';
+import useSpeech from '../hooks/useSpeech';
 import './conversationBtn.css';
 
 const ConversationBtn = ({ answersQuestions }) => {

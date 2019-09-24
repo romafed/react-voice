@@ -65,7 +65,6 @@ class ReactSpeech {
 
     findingAnswer(transcript) {
         const message = transcript.toLowerCase();
-        console.log(message);
 
         // finding answer
         const answer = this.answersQuestions.find(sentence => {
@@ -82,10 +81,6 @@ class ReactSpeech {
         const { answers } = answer;
         const speekAnswer = answers[Math.floor(Math.random() * answers.length)];
         return this.speakMessage(speekAnswer);
-    }
-
-    addingAnswersQuestions() {
-
     }
 
     speakMessage(message) {
